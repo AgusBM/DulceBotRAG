@@ -1,4 +1,4 @@
-# Agente RAG para WhatsApp y Telegram
+# Agente RAG para WhatsApp
 
 **Qué hace**  
 - Responde entrevistas y soporte vía WhatsApp.  
