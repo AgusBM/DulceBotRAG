@@ -1,0 +1,43 @@
+{
+  "title": "DulceBotRAG Document Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único del documento"
+    },
+    "title": {
+      "type": "string",
+      "description": "Título del documento"
+    },
+    "content": {
+      "type": "string",
+      "description": "Contenido principal del documento"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Información adicional asociada al documento",
+      "properties": {
+        "author": {
+          "type": "string",
+          "description": "Autor del documento"
+        },
+        "date_created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Fecha de creación del documento"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Etiquetas asociadas al documento"
+        }
+      },
+      "required": ["author", "date_created"]
+    }
+  },
+  "required": ["id", "title", "content", "metadata"]
+}
+

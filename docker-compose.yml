@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+    networks:
+      - dulcenet
+    volumes:
+      - ./rabbitmq_init.sh:/docker-entrypoint-initdb.d/rabbitmq_init.sh
+
+
+networks:
+  dulcenet:
+    driver: bridge
+

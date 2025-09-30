@@ -1,0 +1,8 @@
+pika
+Flask
+Flask-Cors
+pyodbc
+requests
+PyYAML
+python-dotenv>=1.0.0
+numpy
