@@ -21,14 +21,18 @@ Python (embeddings + retrieval) · Node.js (bots) · RabbitMQ · Docker · (opci
 git clone https://github.com/AgusBM/DulceBotRAG.git
 cd DulceBotRAG
 
-# 2) Carga tus archivos md o txt en las carpetas de conocimiento, en la carpeta classifier carga algunos documentos de muestra que permita clasificar el mensaje recibido y escoger entre el agente de soporte y el agente de servicio. En la carpeta consumer carga toda la base de conocimiento.
-├── agent/            
-│   ├── classifier/
-│          ├── order/
-│          └── support/
-│   └── consumer/
-│          ├── order/
-│          └── support/
+# 2) Carga tus archivos md o txt en las carpetas de conocimiento,
+# en la carpeta classifier carga algunos documentos de muestra
+# que permita clasificar el mensaje recibido y escoger entre
+# el agente de soporte y el agente de servicio.
+# En la carpeta consumer carga toda la base de conocimiento.
+# ├── agent/            
+# │   ├── classifier/
+# │          ├── order/
+# │          └── support/
+# │   └── consumer/
+# │          ├── order/
+# │          └── support/
 
 # 3) Actualiza las variables de entorno .env y config.py
 cp .env.example .env
