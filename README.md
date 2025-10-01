@@ -30,17 +30,17 @@ cd DulceBotRAG
 │          ├── order/
 │          └── support/
 
-# 2) Inicia LMStudio y carga tu modelo LLM favorito
-../squashfs-root/./lm-studio
-
 # 3) Actualiza las variables de entorno .env y config.py
 cp .env.example .env
 # Rellena ENDPOINT_URL, API_KEY, MODEL_ID, RABBITMQ_USER/PASSWORD, etc.
 
-# 4) Inicia RabbitMQ en Docker
+# 4) Inicia LMStudio y carga tu modelo LLM favorito
+../squashfs-root/./lm-studio
+
+# 5) Inicia RabbitMQ en Docker
 docker compose up --build -d
 
-# 5) Inicia el Bot de WhatsApp, la primera vez te mostrara un QR para enlazar con tu dispositivo
+# 6) Inicia el Bot de WhatsApp, la primera vez te mostrara un QR para enlazar con tu dispositivo
 node whatsapp-bot/index.js
 
 # 6) Inicia el consumer de WhatsApp
