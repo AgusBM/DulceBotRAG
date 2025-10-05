@@ -44,10 +44,40 @@ cp .env.example .env
 # 5) Inicia RabbitMQ en Docker
 docker compose up --build -d
 
-# 6) Inicia el Bot de WhatsApp, la primera vez te mostrara un QR para enlazar con tu dispositivo
+# 6) Instalar Node e iniciar el Bot de WhatsApp, la primera vez te mostrara un QR para enlazar con tu dispositivo
+# Instalar Volta (Linux/macOS)
+curl https://get.volta.sh | bash
+# cierra y abre la terminal, o:
+source ~/.bashrc  # o ~/.zshrc según tu shell
+
+# Instalar y fijar Node 22.9.0 para el proyecto actual
+volta install node@22.9.0
+volta pin node@22.9.0   # guarda la versión en package.json -> "volta": { "node": "22.9.0" }
+
+# Inicia el bot
 node whatsapp-bot/index.js
 
-# 6) Inicia el consumer de WhatsApp
+# 7) Activar el entorno y comprobar version de Python
+python3 -m venv .venv
+source .venv/bin/activate  # Linux/macOS
+# .\.venv\Scripts\activate  # Windows PowerShell
+python -V
+# Python 3.12.3
+
+# 8) Instalar dependencias
+
+Opción A (rápida): usar requirements.txt
+pip install --upgrade pip
+pip install -r requirements.txt
+
+Opción B (recomendado para desarrollo): pip-tools
+pip install --upgrade pip pip-tools
+# compilar desde requirements.in a requirements.txt
+pip-compile requirements.in -o requirements.txt
+# sincronizar el entorno con el lock generado
+pip-sync requirements.txt
+
+# 9) Inicia el consumer de WhatsApp
 python consumer/whatsapp_consumer.py
 
 
