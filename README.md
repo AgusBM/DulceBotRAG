@@ -34,14 +34,22 @@ cd DulceBotRAG
 # │          ├── order/
 # │          └── support/
 
-# 3) Actualiza las variables de entorno .env y config.py
+# 3) Actualiza las variables de entorno .env.example, index.js y config.py
 cp .env.example .env
 # Rellena ENDPOINT_URL, API_KEY, MODEL_ID, RABBITMQ_USER/PASSWORD, etc.
 
-# 4) Inicia LMStudio y carga tu modelo LLM favorito
-../squashfs-root/./lm-studio
+# 4) Instala e inicia LMStudio
+#descarga la imagen de https://lmstudio.ai/
+chmod u+x LM_Studio-*.AppImage
+./LM_Studio-*.AppImage --appimage-extract
+cd squashfs-root
+sudo chown root:root chrome-sandbox
+sudo chmod 4755 chrome-sandbox
+./lm-studio
+#Se abrira en una ventana, activa el servidor en el modo desarrollador, estara disponible en http://127.0.0.1:1234
 
 # 5) Inicia RabbitMQ en Docker
+cd DulceBotRAG
 docker compose up --build -d
 
 # 6) Instalar Node e iniciar el Bot de WhatsApp, la primera vez te mostrara un QR para enlazar con tu dispositivo
@@ -54,13 +62,19 @@ source ~/.bashrc  # o ~/.zshrc según tu shell
 volta install node@22.9.0
 volta pin node@22.9.0   # guarda la versión en package.json -> "volta": { "node": "22.9.0" }
 
+#Intalar WhiskeysSockets
+npm install @whiskeysockets/baileys
+
 # Inicia el bot
 node whatsapp-bot/index.js
+#Escanear el codigo QR que aparece en el terminal la primera vez para vincular desde la sesion de WhatsApp
 
 # 7) Activar el entorno y comprobar version de Python
-python3 -m venv .venv
-source .venv/bin/activate  # Linux/macOS
-# .\.venv\Scripts\activate  # Windows PowerShell
+sudo apt update
+sudo apt install -y python3.12 python3.12-venv python3.12-dev
+# Crear y activar entorno virtual
+python3.12 -m venv .venv312
+source .venv312/bin/activate
 python -V
 # Python 3.12.3
 
@@ -80,4 +94,4 @@ pip-sync requirements.txt
 # 9) Inicia el consumer de WhatsApp
 python consumer/whatsapp_consumer.py
 
-
+# 10) El agente respondera a las preguntas enviadas a la cuenta de WhatsApp vinculada, buen servicio!!
