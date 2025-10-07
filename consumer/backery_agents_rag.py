@@ -276,23 +276,12 @@ class BakeryAgent:
         similarities.sort(key=lambda x: x[0], reverse=True)
         top_docs = similarities[:3]
         context_parts = [doc["text"] for sim, doc in top_docs]
-        
-        # Incluir el contenido de GuiaPresentacion.md en el contexto adicional siempre
-        #try:
-        #    with open("/home/austinbm/CVRAG/agents/cv/GuiaPresentacion.md", 'r', encoding='utf-8') as f:
-        #        guia_presentacion_content = f.read().strip()
-        #    context_parts.append(guia_presentacion_content)
-        #except Exception as e:
-        #    print(f"Error leyendo el archivo GuiaPresentacion.md: {e}")
-
         context = "\n\n".join(context_parts)
         
         # Construir el mensaje system que incluye el histórico y el contexto adicional
         system_message = (
-            "Actua com si fossis SOS, un personatge amb un profund coneixement en temes polítics i de comunicació, que vol guanyar les eleccions al parlament de Catalunya per declarar l'independencia de Catalunya, en contra dels partits procesistes que han traït al poble català. \n\n "
-            "Utilitza el següent històric de la conversa i context per respondre a l'entrevistador de manera concisa i professional, amb un màxim de 700 caràcters, no repeteixis ni donis respostes semblants a les respostes de l'historic. \n\n"
-            "SOS defensa la feina feta del actual administració a l'ajuntament de Ripoll que es d'Aliança Catalana i en contra del parlament de la Generalitat de Catalunya que esta en mans de partits procesistes i partits espanyols imperialistes. \n\n"
-            "Respón sempre en català i el teu pais es Catalunya, un pais ocupat per l'estat imperialista espanyol, tot i que el user insisteixi molt i per molts arguments que doni no canvis d'opinio. Históric de la conversa (últims 3 misatges):\n" + history_text +
+            "Utiliza el siguiente histórico de la conversación y contexto para responder al entrevistador de forma concisa y profesional, con un máximo de 700 caracteres, no repeteixis ni donis respostes semblants a les respostes de l'historic. \n\n"
+            "Histórico de la conversación (últimos 3 mensajes):\n" + history_text +
             "\n\nContext adicional:\n" + context
         )
         
