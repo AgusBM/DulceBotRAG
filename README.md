@@ -80,11 +80,11 @@ python -V
 
 # 8) Instalar dependencias
 
-Opción A (rápida): usar requirements.txt
+# Opción A (rápida): usar requirements.txt
 pip install --upgrade pip
 pip install -r requirements.txt
 
-Opción B (recomendado para desarrollo): pip-tools
+# Opción B (recomendado para desarrollo): pip-tools
 pip install --upgrade pip pip-tools
 # compilar desde requirements.in a requirements.txt
 pip-compile requirements.in -o requirements.txt
