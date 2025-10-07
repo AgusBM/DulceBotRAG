@@ -6,7 +6,7 @@ import yaml
 import re
 from pathlib import Path
 # --- Auto-descubrimiento de ficheros por extensión ---
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def list_files_recursive(*folders, exts=(".md", ".json")):
     """Devuelve rutas (str) únicas y ordenadas de todos los ficheros con las extensiones indicadas, recursivo."""
@@ -28,6 +28,13 @@ class ClassifierAgent:
         support_paths = list_files_recursive("agent/classifier/support", exts=(".md", ".json"))
         self.order_docs_embeddings = self._load_and_embed_docs(order_paths)
         self.support_docs_embeddings = self._load_and_embed_docs(support_paths)
+        print("Documentos encontrados para 'order':")
+        for path in order_paths:
+            print(f"  - {path}")
+        print("Documentos encontrados para 'support':")
+        for path in support_paths:
+            print(f"  - {path}")
+    
     def _load_and_embed_docs(self, paths):
         """Loads and embeds documents from the given paths."""
         documents = self._load_documents(paths)
