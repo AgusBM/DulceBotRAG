@@ -11,7 +11,7 @@ from backery_agents_rag import OrderAgent, CustomerSupportAgent
 from config import connection_string, RABBITMQ_HOST, RABBITMQ_USER, RABBITMQ_PASSWORD, ENDPOINT_URL, API_KEY, MODEL_ID, DATABASE_FILE
 from pathlib import Path
 # Define the base directory
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def list_files(*folders, exts=(".md",)):
     """Devuelve una lista ordenada de rutas (str) a todos los ficheros con las extensiones dadas, de forma recursiva."""
