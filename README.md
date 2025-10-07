@@ -1,4 +1,5 @@
-Here’s your README in English:
+[English](README.md) | [Català](README.cat.md) | [Español](README.es.md)
+
 
 # RAG Agent for WhatsApp
 
