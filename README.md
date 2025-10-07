@@ -10,7 +10,7 @@ Python (embeddings + retrieval) · Node.js (bots) · RabbitMQ · Docker · (opci
 
 ## Demo
 - 🎥 Video mostrando el flujo end-to-end.
-- 🖼️ Capturas: `images/`
+- 🖼️ Capturas: `/video/agenteRAG.mp4`
 
 ## Arquitectura
 ![Diagrama](images/arquitectura.png)
